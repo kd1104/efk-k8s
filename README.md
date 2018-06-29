@@ -9,15 +9,16 @@ apt-get update
 apt-get -y install oracle-java8-installer
 
 2. Install Elasticsearch
-wget -qO - https://packages.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
-echo "deb http://packages.elastic.co/elasticsearch/2.x/debian stable main" | sudo tee -a /etc/apt/sources.list.d/elasticsearch-6.x.list
-apt-get update
-apt-get -y install elasticsearch
-Edit in  /etc/elasticsearch/elasticsearch.yml
-- path.data: /var/lib/elasticsearch
-- path.logs: /var/log/elasticsearch
-- network.host: localhost (localhost change to ip or 0.0.0.0)
-service elasticsearch restart
+1. wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
+2. apt-get install apt-transport-https
+3. echo "deb https://artifacts.elastic.co/packages/6.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-6.x.list
+4. apt-get update
+5. apt-get -y install elasticsearch
+6.Edit in  /etc/elasticsearch/elasticsearch.yml
+    - path.data: /var/lib/elasticsearch
+    - path.logs: /var/log/elasticsearch
+    - network.host: localhost (localhost change to ip or 0.0.0.0)
+7. service elasticsearch restart
 
 
 Install logstash
